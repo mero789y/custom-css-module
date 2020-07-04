@@ -13,7 +13,7 @@ const 789yCss = require("./main.js");
 
 789yCss.init();
 ```
-No need to wait for the DOM to be ready, just write `789yCss.init()` and it does the rest for you!
+No need to wait for the DOM to be ready, just write `789yCss.init()` in your preload file and it does the rest for you!
 
 
 ## License
