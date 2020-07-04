@@ -4,19 +4,13 @@ An easy to use custom CSS module for krunker client developers.
 
 ## Installation
 
-Using npm
-
-```bash
-npm i 789yCss
-```
-
-Or simply grab the main.js file from above.
+Simply grab the main.js file from above.
 
 ## Usage
 
 From NPM installation: 
 ```JavaScript
-const 789yCss = require("789yCss"); //or "main.js" depending on how it was installed
+const 789yCss = require("./main.js");
 
 789yCss.init();
 ```
