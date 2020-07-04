@@ -8,7 +8,6 @@ Simply grab the main.js file from above.
 
 ## Usage
 
-From NPM installation: 
 ```JavaScript
 const 789yCss = require("./main.js");
 
