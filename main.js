@@ -16,7 +16,14 @@ const replaceCSS = url => {
   }
 };
 
-module.exports.init = () => {
+const updateFromChangeDisplay = () => {
+  if (document.getElementById("windowHeader").innerText == "Game Settings") {
+    console.log("rendered");
+    render();
+  }
+};
+
+const render = () => {
   let setHolder = document.createElement("div");
   setHolder.classList.add("settName");
   setHolder.setAttribute("title", true);
@@ -34,11 +41,34 @@ module.exports.init = () => {
   };
 
   setHolder.appendChild(cssInput);
+  document.getElementById("settHolder").appendChild(setHolder);
+};
 
+//checks when windowHolder cleared to re-render css element
+const setDisplayInterval = () => {
+  let int = setInterval(() => {
+    if (document.getElementById("windowHolder").style.display == "block") {
+      console.log(
+        "Window holder being displayed, checking if game settings present"
+      );
+      updateFromChangeDisplay();
+      clearInterval(int);
+
+      let interval = setInterval(() => {
+        if (document.getElementById("windowHolder").style.display == "none") {
+          console.log("Window holder hidden, checking for display");
+          clearInterval(interval);
+          setDisplayInterval();
+        }
+      }, 10);
+    }
+  }, 10);
+};
+
+module.exports.init = () => {
   let checkInterval = setInterval(() => {
     if (document.contains(document.getElementById("settHolder"))) {
-      console.log(setHolder);
-      document.getElementById("settHolder").appendChild(setHolder);
+      setDisplayInterval();
       clearInterval(checkInterval);
     }
   }, 10);
